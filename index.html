@@ -8,10 +8,20 @@
 </head>
 <body>
   <script>
-    //function returns a random number 0 to 2.
+    //function returns "Rock", "Paper", or "Scissors".
     function getComputerChoice() {
-      return Math.floor(Math.random() * 3);
+      let randomNumber = Math.floor(Math.random() * 3);
+      //console.log("Random number: " + randomNumber);
+      switch (randomNumber) {
+        case 0:
+          return "Rock";
+        case 1:
+          return "Paper";
+        case 2:
+          return "Scissors";
+      }
     }
+    //console.log("Computer guess: " + getComputerChoice());
   </script>
 </body>
 </html>
