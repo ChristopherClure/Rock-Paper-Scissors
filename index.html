@@ -10,22 +10,55 @@
   <script>
     let playerSelection = prompt("Pick Rock, Paper, or Scissors."); //Needs input
     let computerSelection = getComputerChoice();
-    
-    //function returns "Rock", "Paper", or "Scissors".
+
+    //function returns "rock", "paper", or "scissors".
     function getComputerChoice() {
       let randomNumber = Math.floor(Math.random() * 3);
       //console.log("Random number: " + randomNumber);
       switch (randomNumber) {
         case 0:
-          return "Rock";
+          return "rock";
         case 1:
-          return "Paper";
+          return "paper";
         case 2:
-          return "Scissors";
+          return "scissors";
       }
     }
     
+    //changes user input to lowercase and does comparisons. === is a tie, rock beats scissors, paper beats rock, scissors beat paper.
     function oneRound(playerSelection, computerSelection) {
+      let lowerPlayerSelection = playerSelection.toLowerCase();
+      if (playerSelection === computerSelection) {
+        return "Tie";
+      }
+      else {
+        //embedded if statements
+        if (playerSelection === "rock") {
+          if (computerSelection === "paper") {
+            return "You Lose! Paper beats Rock";
+          }
+          else { 
+            return "You Win! Rock beats Scissors";
+          }
+        }
+        else if (playerSelection === "paper") {
+          if (computerSelection === "rock") {
+            return "You Win! Paper beats Rock";
+          }
+          else { 
+            return "You Lose! Scissors beats Paper";
+        }
+        else if (playerselection === "scissors") {
+          if (computerSelection === "paper") {
+            return "You Win! Scissors beats Paper";
+          }
+          else { 
+            return "You Lose! Rock beats Scissors";
+        }
+        else {
+          return "Not a valid input.";
+        }
+      }
 
     }
   </script>
