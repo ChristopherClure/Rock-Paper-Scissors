@@ -8,6 +8,9 @@
 </head>
 <body>
   <script>
+    let playerSelection = prompt("Pick Rock, Paper, or Scissors."); //Needs input
+    let computerSelection = getComputerChoice();
+    
     //function returns "Rock", "Paper", or "Scissors".
     function getComputerChoice() {
       let randomNumber = Math.floor(Math.random() * 3);
@@ -21,7 +24,10 @@
           return "Scissors";
       }
     }
-    //console.log("Computer guess: " + getComputerChoice());
+    
+    function oneRound(playerSelection, computerSelection) {
+
+    }
   </script>
 </body>
 </html>
