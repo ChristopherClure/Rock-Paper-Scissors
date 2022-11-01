@@ -8,13 +8,13 @@
 </head>
 <body>
   <script>
-    let playerSelection = prompt("Pick Rock, Paper, or Scissors."); //Needs input
-    let computerSelection = getComputerChoice();
+    game();
+    //console.log(oneRound(playerSelection, computerSelection)); //Test imput
 
     //function returns "rock", "paper", or "scissors".
     function getComputerChoice() {
       let randomNumber = Math.floor(Math.random() * 3);
-      //console.log("Random number: " + randomNumber);
+      //console.log("Random number: " + randomNumber); //Test random number
       switch (randomNumber) {
         case 0:
           return "rock";
@@ -26,14 +26,16 @@
     }
     
     //changes user input to lowercase and does comparisons. === is a tie, rock beats scissors, paper beats rock, scissors beat paper.
-    function oneRound(playerSelection, computerSelection) {
+    function oneRound() {
+      let playerSelection = prompt("Pick Rock, Paper, or Scissors.");
       let lowerPlayerSelection = playerSelection.toLowerCase();
-      if (playerSelection === computerSelection) {
+      let computerSelection = getComputerChoice();
+      if (lowerPlayerSelection === computerSelection) {
         return "Tie";
       }
       else {
         //embedded if statements
-        if (playerSelection === "rock") {
+        if (lowerPlayerSelection === "rock") {
           if (computerSelection === "paper") {
             return "You Lose! Paper beats Rock";
           }
@@ -41,7 +43,7 @@
             return "You Win! Rock beats Scissors";
           }
         }
-        else if (playerSelection === "paper") {
+        else if (lowerPlayerSelection === "paper") {
           if (computerSelection === "rock") {
             return "You Win! Paper beats Rock";
           }
@@ -49,7 +51,7 @@
             return "You Lose! Scissors beats Paper";
           }
         }
-        else if (playerSelection === "scissors") {
+        else if (lowerPlayerSelection === "scissors") {
           if (computerSelection === "paper") {
             return "You Win! Scissors beats Paper";
           }
@@ -62,6 +64,34 @@
         }
       }
 
+    }
+
+    function game() {
+      let score = 0;
+      let computerScore = 0;
+      for (let i = 0; i < 5; i++) {
+        let returnPhrase = oneRound();
+        console.log(returnPhrase);
+        if (returnPhrase.charAt(5) === "W") {
+          score++;
+        }
+        else if (returnPhrase.charAt(5) === "L") {
+          computerScore++;
+        }
+
+      }
+      if (score > computerScore) {
+        console.log("You win the game!!")
+      }
+      else if (computerScore > score) {
+        console.log("You lose the game!!")
+      }
+      else if (computerScore === score) {
+        console.log("The games a Tie.")
+      }
+      else {
+        console.log("error")
+      }
     }
   </script>
 </body>
